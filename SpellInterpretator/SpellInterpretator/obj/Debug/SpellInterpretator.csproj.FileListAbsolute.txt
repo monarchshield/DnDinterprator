@@ -4,3 +4,9 @@ c:\users\anthony.bogli\documents\visual studio 2015\Projects\SpellInterpretator\
 c:\users\anthony.bogli\documents\visual studio 2015\Projects\SpellInterpretator\SpellInterpretator\obj\Debug\SpellInterpretator.csprojResolveAssemblyReference.cache
 c:\users\anthony.bogli\documents\visual studio 2015\Projects\SpellInterpretator\SpellInterpretator\obj\Debug\SpellInterpretator.exe
 c:\users\anthony.bogli\documents\visual studio 2015\Projects\SpellInterpretator\SpellInterpretator\obj\Debug\SpellInterpretator.pdb
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Debug\SpellInterpretator.exe.config
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\obj\Debug\SpellInterpretator.exe
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\obj\Debug\SpellInterpretator.pdb
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Debug\SpellInterpretator.exe
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Debug\SpellInterpretator.pdb
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\obj\Debug\SpellInterpretator.csprojResolveAssemblyReference.cache

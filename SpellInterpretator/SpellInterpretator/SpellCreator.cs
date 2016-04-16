@@ -35,15 +35,7 @@ namespace SpellInterpretator
         FULLROUND
     };
 
-    public enum SpellEffectAreaType
-    {
-        NONE,
-        CONE,
-        RADIUS,
-        AABB,
-        RAY
-    };
- 
+   
     public enum SpellSchool
     {
         NOSCHOOL,
@@ -70,8 +62,9 @@ namespace SpellInterpretator
     
         public string _SpellDuration;
         public SavingThrow _Savingthrow;
-        public SpellEffectAreaType _AreaType;
-        public int _DefaultSpellRange;
+       // public SpellEffectAreaType _AreaType;
+        public string _AreaType;
+        public string _DefaultSpellRange;
 
     };
 
@@ -91,15 +84,29 @@ namespace SpellInterpretator
 
            string response;
 
-#region Spell Name
+
+            #region Author
+            Console.WriteLine("-------------------------------------------------------\nAuthor: Anthony Bogli \nDescription: Used for Creating Spell Macros \nCreated Date: 6th of April 2016 \nGithub: www.github.com/monarchshield \n \nShortcuts: \n!CL for casterlevel \n!CLMAX99 for casterlevel up to max of 99 \n-------------------------------------------------------\n");
+            #endregion
+
+
+            #region Spell Name
             Console.WriteLine("Enter In the Spell Name");
             m_SpellInfo._SpellName = Console.ReadLine();
             Console.WriteLine();
-#endregion
+            #endregion
 
-# region SpellDescription
+            # region SpellDescription
             Console.WriteLine("Enter In the Spells Description");
-            m_SpellInfo._SpellDescription = Console.ReadLine();
+
+            #region Shortcuts
+            response = Console.ReadLine();
+            response.Replace("!CL", "[[@{casterlevel}]]");
+            string val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
+            response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
+            #endregion
+
+            m_SpellInfo._SpellDescription = response;
             Console.WriteLine();
             #endregion
 
@@ -172,7 +179,7 @@ namespace SpellInterpretator
                 default:
                     {
                         Console.WriteLine("What is Spells Distance");
-                        m_SpellInfo._DefaultSpellRange = Convert.ToInt32(Console.ReadLine());
+                        m_SpellInfo._DefaultSpellRange = Console.ReadLine();
                         m_SpellInfo._SpellRange = SpellRange.NA;
                     }
                     break;
@@ -181,16 +188,29 @@ namespace SpellInterpretator
             #endregion
 
             #region Area of Effect
-           Console.WriteLine("Enter a spells area of effect Type 0 if none or 1 If Cone, 2 If Cube, 3 if Radius");
+           Console.WriteLine("Enter a spells area of effect Type 0 if none or 1 If Cone \n 2 If Cube, 3 if Radius, 4 if Line");
            m_SpellInfo._AreaOfEffect = Convert.ToInt32(Console.ReadLine());
+
+            if (m_SpellInfo._AreaOfEffect > 0 && m_SpellInfo._AreaOfEffect < 5)
+            {
+                Console.WriteLine("Enter how big the effect is e.g 30 or [[!CL * 2]] etc");
+                response = Console.ReadLine();
+
+                #region Shortcuts
+                response.Replace("!CL", "[[@{casterlevel}]]");
+                string val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
+                response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
+                #endregion
+            }
 
             switch (m_SpellInfo._AreaOfEffect)
             {
-                case 0: m_SpellInfo._AreaType = SpellEffectAreaType.NONE; break;
-                case 1: m_SpellInfo._AreaType = SpellEffectAreaType.CONE; break;
-                case 2: m_SpellInfo._AreaType = SpellEffectAreaType.RADIUS; break;
-                case 3: m_SpellInfo._AreaType = SpellEffectAreaType.AABB; break;
-                default: m_SpellInfo._AreaType = SpellEffectAreaType.NONE; break;
+                case 0: m_SpellInfo._AreaType = "None"; break;
+                case 1: m_SpellInfo._AreaType = response + "ft Cone"; break;
+                case 2: m_SpellInfo._AreaType = response + "ft Cube"; break;
+                case 3: m_SpellInfo._AreaType = response + "ft Circle"; break;
+                case 4: m_SpellInfo._AreaType = response + "Ft Line"; break;
+                default: m_SpellInfo._AreaType =" None"; break;
             }
 
             Console.WriteLine();
@@ -208,10 +228,10 @@ namespace SpellInterpretator
                 case "I": m_SpellInfo._SpellDuration = "Instantaneous"; break;
                 case "C":
                     {
-                        int _Bonus;
+                      
                         Console.WriteLine("Any bonuses like Concentration +1 etc enter 0 for none");
-                       _Bonus =  Convert.ToInt32(Console.ReadLine());           
-                        m_SpellInfo._SpellDuration= "[[1d20 + [[@{concentration}]]" + _Bonus.ToString() + "]]";
+                        response = Console.ReadLine();       
+                        m_SpellInfo._SpellDuration= "[[1d20 + [[@{concentration}]]" + response + "]]";
                     }
                     break;
 
@@ -223,7 +243,15 @@ namespace SpellInterpretator
                 case "N":
                     {
                         Console.WriteLine("Well your gonna have to DIY it for now until this is added type in the macro code e.g \n [[[[@{casterlevel}]]]] that retrieves caster level \n or [[1d20]] rolls a d20 or [[[[1d20]]+ 2]] rolls a d20 + 2) \n");
-                        m_SpellInfo._SpellDuration = Console.ReadLine();
+                        response = Console.ReadLine();
+
+                        #region Shortcuts
+                        response.Replace("!CL", "[[@{casterlevel}]]");
+                        string val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
+                        response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
+                        #endregion
+
+                        m_SpellInfo._SpellDuration = response;
                     }
                     break;
 
@@ -232,7 +260,6 @@ namespace SpellInterpretator
             }
             Console.WriteLine();
             #endregion
-
 
             #region SaveThrowTypes
  
@@ -259,7 +286,9 @@ namespace SpellInterpretator
            
             string Macrostring = "&{template:DnD35StdRoll}{{spellflag=true}}";
             Macrostring += "{{name= @{character_name} casts " + m_SpellInfo._SpellName + "}}";
+            Macrostring += "{{School:= " + m_SpellInfo._SpellSchool.ToString() + "}}";
 
+            #region SpellCastingTIme
             switch (m_SpellInfo._SpellCastingTime)
             {
                 case CastingTime.SWIFT:
@@ -275,7 +304,9 @@ namespace SpellInterpretator
                 default:
                     break;
             }
+            #endregion  
 
+            #region SpellRange
             switch (m_SpellInfo._SpellRange)
             {
                 case SpellRange.Personal:
@@ -306,13 +337,16 @@ namespace SpellInterpretator
                 default:
                     break;
             }
-
+            #endregion
 
             Macrostring += "{{Components:=" + m_SpellInfo._SpellComponents + "}}";
 
             Macrostring += "{{Duration:=" + m_SpellInfo._SpellDuration + "}}";
-            string _Savetype;
 
+
+            #region SavingThrow
+
+            string _Savetype;
             switch (m_SpellInfo._Savingthrow)
             {
                 case SavingThrow.NOPE: _Savetype = "None:"; break;
@@ -359,6 +393,7 @@ namespace SpellInterpretator
                 }
             }
 
+         #endregion SavingThrow
             Macrostring += "{{Description:=" + m_SpellInfo._SpellDescription + "}}";
 
 
