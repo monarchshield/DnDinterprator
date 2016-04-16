@@ -101,9 +101,11 @@ namespace SpellInterpretator
 
             #region Shortcuts
             response = Console.ReadLine();
-            response.Replace("!CL", "[[@{casterlevel}]]");
             string val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
             response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
+
+            response.Replace("!CL", "[[@{casterlevel}]]");
+
             #endregion
 
             m_SpellInfo._SpellDescription = response;
@@ -197,9 +199,10 @@ namespace SpellInterpretator
                 response = Console.ReadLine();
 
                 #region Shortcuts
-                response.Replace("!CL", "[[@{casterlevel}]]");
-                string val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
+                val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
                 response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
+
+                response.Replace("!CL", "[[@{casterlevel}]]");
                 #endregion
             }
 
@@ -246,9 +249,10 @@ namespace SpellInterpretator
                         response = Console.ReadLine();
 
                         #region Shortcuts
-                        response.Replace("!CL", "[[@{casterlevel}]]");
-                        string val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
+                        val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
                         response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
+
+                        response.Replace("!CL", "[[@{casterlevel}]]");
                         #endregion
 
                         m_SpellInfo._SpellDuration = response;
