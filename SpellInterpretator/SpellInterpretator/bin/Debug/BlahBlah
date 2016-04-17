@@ -1,1 +1,0 @@
-&{template:DnD35StdRoll}{{spellflag=true}}{{name= @{character_name} casts BlahBlah}}{{Casting Time:= Standard}}{{Range:= [[[[[[floor([[[[@{casterlevel}]] /2]]) * 5]] + 25]]]] ft }}{{Components:=V,S}}{{Duration:=[[1d20 + [[@{concentration}]]0]]}}{{Description:=V,S}}

@@ -1,0 +1,1 @@
+&{template:DnD35StdRoll}{{spellflag=true}}{{name= @{character_name} casts Stone Shape Test}}{{School:= TRANSMUTATION}}{{Casting Time:= Standard}}{{Range:= Touch}}{{Area:=[[10 + [[@{casterlevel}]]]]ft Cube}}{{Components:=V,S,M/DF}}{{Duration:=Instantaneous}}{{Description:=Contr/Shape stone within the area}}

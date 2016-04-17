@@ -1,0 +1,5 @@
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Release\SpellInterpretator.exe.config
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Release\SpellInterpretator.exe
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Release\SpellInterpretator.pdb
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\obj\Release\SpellInterpretator.exe
+C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\obj\Release\SpellInterpretator.pdb
