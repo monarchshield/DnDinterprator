@@ -84,6 +84,7 @@ namespace SpellInterpretator
 
             string response;
             string val;
+            bool isNumeric = false;
 
             #region Author
             Console.WriteLine("-------------------------------------------------------\nAuthor: Anthony Bogli \nDescription: This is for creating spell macros for Roll20 \nCreated Date: 6th of April 2016 \nGithub: www.github.com/monarchshield\n \nShortcuts: \n!CL for casterlevel \n!CLMAX99 for casterlevel up to max of 99\n\nThe macro files are named the same as your Spell Name and are stored within the folder of the .exe \n-------------------------------------------------------\n");
@@ -142,7 +143,23 @@ namespace SpellInterpretator
 
             #region Spell Level
             Console.WriteLine("What Level is the spell (this effects the saving throw)");
-            m_SpellInfo._SpellLevel = Convert.ToInt32(Console.ReadLine());
+
+            #region DataValidation
+            while (!isNumeric)
+            {
+                int value;
+                isNumeric = int.TryParse(Console.ReadLine(), out value);
+                if (isNumeric)
+                {
+                    m_SpellInfo._SpellLevel = value;
+
+                }
+                else
+                    Console.WriteLine("Please write a number: What level is this spell");
+            }
+            #endregion
+
+         
             Console.WriteLine();
             #endregion
 
@@ -205,8 +222,24 @@ namespace SpellInterpretator
             #endregion
 
             #region Area of Effect
+            isNumeric = false;
+
             Console.WriteLine("Enter a spells area of effect Type 0 if none or 1 If Cone \n 2 If Cube, 3 if Radius, 4 if Line");
-            m_SpellInfo._AreaOfEffect = Convert.ToInt32(Console.ReadLine());
+            #region DataValidation
+            while (!isNumeric)
+            {
+                int value;
+                isNumeric = int.TryParse(Console.ReadLine(), out value);
+                if (isNumeric)
+                {
+                    m_SpellInfo._AreaOfEffect = value;
+
+                }
+                else
+                    Console.WriteLine("\nPlease write a number:\nEnter a spells area of effect Type 0 if none or 1 If Cone \n 2 If Cube, 3 if Radius, 4 if Line");
+            }
+            #endregion
+
 
             if (m_SpellInfo._AreaOfEffect > 0 && m_SpellInfo._AreaOfEffect < 5)
             {
