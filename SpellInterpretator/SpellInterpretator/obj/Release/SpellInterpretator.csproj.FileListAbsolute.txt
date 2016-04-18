@@ -3,3 +3,9 @@ C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Re
 C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\bin\Release\SpellInterpretator.pdb
 C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\obj\Release\SpellInterpretator.exe
 C:\Users\Anthony\Desktop\Sourcetree\SpellInterpretator\SpellInterpretator\obj\Release\SpellInterpretator.pdb
+C:\Users\anthony.bogli\Documents\DnDinterprator\SpellInterpretator\SpellInterpretator\bin\Release\SpellInterpretator.exe.config
+C:\Users\anthony.bogli\Documents\DnDinterprator\SpellInterpretator\SpellInterpretator\obj\Release\SpellInterpretator.exe
+C:\Users\anthony.bogli\Documents\DnDinterprator\SpellInterpretator\SpellInterpretator\obj\Release\SpellInterpretator.pdb
+C:\Users\anthony.bogli\Documents\DnDinterprator\SpellInterpretator\SpellInterpretator\bin\Release\SpellInterpretator.exe
+C:\Users\anthony.bogli\Documents\DnDinterprator\SpellInterpretator\SpellInterpretator\bin\Release\SpellInterpretator.pdb
+C:\Users\anthony.bogli\Documents\DnDinterprator\SpellInterpretator\SpellInterpretator\obj\Release\SpellInterpretator.csprojResolveAssemblyReference.cache

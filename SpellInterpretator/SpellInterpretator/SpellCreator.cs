@@ -101,7 +101,7 @@ namespace SpellInterpretator
             #region Shortcuts
             response = Console.ReadLine();
 
-            if (response.Length > 5)
+            if (response.Length > 6)
             {
                 val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
                 response = response.Remove(response.IndexOf("!CLMAX") + 6, 2);
@@ -118,7 +118,7 @@ namespace SpellInterpretator
 
             #region SpellSchool
 
-            Console.WriteLine("Spells Range: (A)bjuration, (C)onjuration, (D)ivination, Enc(H)antment \n Evocation ,(I)llusion, (N)ecromancy,(T)ransmutation \n  1 For none \n");
+            Console.WriteLine("Spells School: (A)bjuration, (C)onjuration, (D)ivination, Enc(H)antment \n (E)vocation ,(I)llusion, (N)ecromancy,(T)ransmutation \n  1 For none \n");
             response = Console.ReadLine();
 
 
@@ -214,7 +214,7 @@ namespace SpellInterpretator
                 response = Console.ReadLine();
 
                 #region Shortcuts
-                if (response.Length > 5)
+                if (response.Length > 6)
                 {
                     val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
                     response = response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
@@ -266,7 +266,7 @@ namespace SpellInterpretator
                         response = Console.ReadLine();
 
                         #region Shortcuts
-                        if (response.Length > 5)
+                        if (response.Length > 6)
                         {
                             val = response.Substring(response.IndexOf("!CLMAX") + 6, 2);
                             response.Replace("!CLMAX", "[[({@{casterlevel}," + val + "}dh1)]]");
@@ -421,7 +421,7 @@ namespace SpellInterpretator
             Macrostring += "{{Description:=" + m_SpellInfo._SpellDescription + "}}";
 
 
-            System.IO.File.WriteAllText(m_SpellInfo._SpellName, Macrostring);
+            System.IO.File.WriteAllText(m_SpellInfo._SpellName + ".txt", Macrostring);
 
 
         }
