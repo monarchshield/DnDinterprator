@@ -28,12 +28,6 @@ namespace SpellInterpretator
         Fortitude
     };
     
-    public enum CastingTime
-    {
-        SWIFT,
-        STANDARD,
-        FULLROUND
-    };
 
    
     public enum SpellSchool
@@ -56,7 +50,7 @@ namespace SpellInterpretator
         public SpellSchool _SpellSchool;
         public int _SpellLevel;
         public string _SpellComponents;
-        public CastingTime _SpellCastingTime;
+        public string _SpellCastingTime;
         public SpellRange _SpellRange;
         public int _AreaOfEffect;
     
@@ -170,15 +164,20 @@ namespace SpellInterpretator
             #endregion
 
             #region casting time
-            Console.WriteLine("How long to cast: (I)nstant, (S)tandard, (F)ull round");
+            Console.WriteLine("How long to cast: (I)nstant, (S)tandard, (F)ull round, (O)ther");
             response = Console.ReadLine();
             switch (response)
             {
-                case "I": m_SpellInfo._SpellCastingTime = CastingTime.SWIFT; break;
-                case "S": m_SpellInfo._SpellCastingTime = CastingTime.STANDARD; break;
-                case "F": m_SpellInfo._SpellCastingTime = CastingTime.FULLROUND; break;
+                case "I": m_SpellInfo._SpellCastingTime = "SWIFT"; break;
+                case "S": m_SpellInfo._SpellCastingTime = "STANDARD"; break;
+                case "F": m_SpellInfo._SpellCastingTime = "FULL ROUND"; break;
                 default:
-                    break;
+                {
+                    Console.WriteLine("Enter In the Spell casting Duration");
+                    m_SpellInfo._SpellCastingTime = Console.ReadLine();
+                }
+                break;
+
             }
             Console.WriteLine();
 
@@ -345,21 +344,7 @@ namespace SpellInterpretator
             Macrostring += "{{School:= " + m_SpellInfo._SpellSchool.ToString() + "}}";
 
             #region SpellCastingTIme
-            switch (m_SpellInfo._SpellCastingTime)
-            {
-                case CastingTime.SWIFT:
-                    Macrostring += "{{Casting Time:= Immediete}}";
-                    break;
-                case CastingTime.STANDARD:
-                    Macrostring += "{{Casting Time:= Standard}}";
-                    break;
-                case CastingTime.FULLROUND:
-                    Macrostring += "{{Casting Time:= fullRound}}";
-                    break;
-
-                default:
-                    break;
-            }
+            Macrostring += "{{Casting Time:=" + m_SpellInfo._SpellCastingTime + "}}";
             #endregion  
 
             #region SpellRange
@@ -451,11 +436,22 @@ namespace SpellInterpretator
             }
 
          #endregion SavingThrow
+
             Macrostring += "{{Description:=" + m_SpellInfo._SpellDescription + "}}";
 
+            #region FileName
+            string Name = m_SpellInfo._SpellName;
+            Name = Name.Replace("[", "");
+            Name = Name.Replace("]", "");
 
-            System.IO.File.WriteAllText(m_SpellInfo._SpellName + ".txt", Macrostring);
+            int Num = Name.IndexOf("(");
 
+            if(Num > 0)
+            Name = Name.Remove(Num, Name.Length - Num);
+#endregion
+
+            //System.IO.File.WriteAllText(m_SpellInfo._SpellName + ".txt", Macrostring);
+            System.IO.File.WriteAllText(Name + ".txt", Macrostring);
 
         }
     }
